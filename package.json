@@ -1,5 +1,5 @@
 {
-  "name": "@csrcreative/global-assets",
+  "name": "@romerocs/global-assets",
   "version": "1.0.4",
   "description": "Testing npm private packages",
   "main": "index.js",
