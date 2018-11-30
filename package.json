@@ -1,0 +1,19 @@
+{
+  "name": "global-assets",
+  "version": "1.0.0",
+  "description": "Testing npm private packages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/csrcreative/global-assets.git"
+  },
+  "author": "Chris Romero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csrcreative/global-assets/issues"
+  },
+  "homepage": "https://github.com/csrcreative/global-assets#readme"
+}
