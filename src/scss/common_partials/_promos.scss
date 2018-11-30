@@ -1,0 +1,114 @@
+.promo-hm {
+    display: block;
+    position: relative;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center !important;
+    color: $brand-white;
+    font-weight: 700;
+    margin-top: $global-padding;
+    margin-bottom: $global-padding;
+    border-bottom: 0;
+    background: $brand-gray-md;
+
+    .cta-wrap-hm {
+        display: block;
+        position: relative;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        text-transform: uppercase;
+    }
+
+    .cta-wrap-hm:after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 1rem;
+        background-image: url('#{$images}svg/chevron-white-right.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .cta-hm {
+        display: block;
+        width: 100%;
+        text-align: center !important;
+        padding: 1rem;
+        transition: 0.2s all ease;
+        color: $brand-white;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        .cta-hm {
+            color: $brand-white;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        border-bottom: 0;
+    }
+
+    .lazy-picture-hm {
+        padding-top: 56.25%;
+    }
+
+    .lazy-picture-hm.lazy-loaded-hm {
+        padding-top: 0;
+    }
+}
+
+.promo-hm.button-hm {
+    .cta-hm {
+        background: $brand-gray-md;
+    }
+    
+    &:hover {
+        .cta-hm {
+            background: lighten($brand-gray-md, 12%);
+        }
+    }
+}
+
+.promo-hm.main-hm {
+    .relative-hm {
+        overflow: hidden;
+        background: lighten($brand-gray-md, 12%);
+    }
+
+
+    img {
+        transition: 0.2s all ease;
+    }
+
+    .cta-hm {
+        background: rgba(153,0,0,0.95);
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.08);
+        }
+
+        .cta-hm {
+            background: $hover-state-red;
+        }
+    }
+}
+
+.vertical-promo-hm {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.vertical-promo-hm:first-child {
+    margin-top: 0;
+}

@@ -1,0 +1,8 @@
+.sharing-link-hm {
+    @include shareLinks(
+        $fill: $brand-gray-md,
+        $margin: 10px,
+        $background: $brand-gray-lt,
+        $background_hover: $brand-teal
+    );
+}

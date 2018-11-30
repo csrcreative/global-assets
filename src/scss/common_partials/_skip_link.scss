@@ -1,0 +1,50 @@
+#skip-link-wrap-hm {
+  position: static;
+}
+
+.skip-link-hm {
+  width: 100%;
+  height: 3rem;
+  overflow: hidden;
+  position: absolute;
+  bottom: -3rem;
+  max-width: 90rem;
+  margin: 0 auto; 
+
+  @include breakpoint(medium) {
+    margin: 0 auto 0 -1.25rem;
+  }
+
+  a {
+    @extend .gotham-bold-hm;
+    position: fixed;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    left: -1000rem;
+    top: -2rem;
+    padding: 0 1rem;
+    line-height: 2rem;
+    color: $brand-white;
+    background: $brand-red;
+    z-index: 5;
+    transition: 0.2s top ease;
+  }
+
+  a:hover,
+  a:focus {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 2rem;
+    width: auto;
+    clip: auto;
+
+    @each $breakpoint-name in $breakpoints {
+      @include breakpoint($breakpoint-name) {
+        left: #{map-get($grid-margin-gutters, $breakpoint-name)};
+      }
+    }
+  }
+}

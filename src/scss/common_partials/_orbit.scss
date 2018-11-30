@@ -1,0 +1,40 @@
+.orbit-previous,
+.orbit-next {
+    width: 3rem;
+    height: 3rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+
+    @extend .background-color-dark-gray-hm;
+    @extend .color-white-hm;
+    @extend .hover-color-black-hm;
+    @extend .hover-background-color-teal-hm;
+    @extend .focus-color-black-hm;
+    @extend .focus-background-color-teal-hm;
+}
+
+.orbit-previous {
+    background-image: url('#{$images}svg/chevron-white-left.svg');
+    left: -2 * $global-padding;
+}
+
+.orbit-next {
+    background-image: url('#{$images}svg/chevron-white-right.svg');
+    right: -2 * $global-padding;
+}
+
+.orbit-bullets button {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0.1rem 0.4rem;
+    border-radius: 50%;
+    background-color: $brand-gray-dk;
+    vertical-align: middle;
+    border: .3rem solid $brand-white;
+}
+
+.orbit-bullets button.is-active {
+    background-color: $brand-red;
+    border: .3rem solid #ebcccc;
+}

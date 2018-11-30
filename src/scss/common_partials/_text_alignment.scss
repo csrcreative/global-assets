@@ -1,0 +1,25 @@
+
+$text-alignment: 'left','center','right';
+
+@mixin make-text-alignment-styles($breakpoints, $text-alignment) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if $breakpoint-value == 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            @each $alignment in $text-alignment {
+                .#{$breakpoint-name}-text-#{$alignment}-hm { 
+                    text-align: #{$alignment} !important;
+                }
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $alignment in $text-alignment {
+                    .#{$breakpoint-name}-text-#{$alignment}-hm { 
+                        text-align: #{$alignment} !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-text-alignment-styles($breakpoints, $text-alignment);

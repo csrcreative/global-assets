@@ -1,0 +1,88 @@
+$spacing-types: padding padding-top padding-right padding-bottom padding-left
+    margin margin-top margin-right margin-bottom margin-left horizontal vertical;
+
+    //TODO: ADD TOP/RIGHT/BOTTOM/LEFT RESPONSIVE SPACING CLASSES
+@mixin make-space($max, $types, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            @each $attr in $types {
+                @for $i from 0 through $max {
+                    @if (str-index($attr, 'vertical')) {
+                        .#{$breakpoint-name}-margin-vertical-#{$i}-hm {
+                            margin-top: $global-padding * $i;
+                            margin-bottom: $global-padding * $i;
+                        }
+                        .#{$breakpoint-name}-padding-vertical-#{$i}-hm {
+                            padding-top: $global-padding * $i;
+                            padding-bottom: $global-padding * $i;
+                        }
+                    }
+                    @else if (str-index($attr, 'horizontal')) {
+                        .#{$breakpoint-name}-margin-horizontal-#{$i}-hm {
+                            margin-left: $global-padding * $i;
+                            margin-right: $global-padding * $i;
+                        }
+                        .#{$breakpoint-name}-padding-horizontal-#{$i}-hm {
+                            padding-left: $global-padding * $i;
+                            padding-right: $global-padding * $i;
+                        }
+                    }
+                    @else if (str-index($attr, 'padding-') or str-index($attr, 'margin-')) {
+                        .#{$breakpoint-name}-#{$attr}-#{$i}-hm {
+                            #{$attr}: $global-padding * $i;
+                        }
+                    } @else {
+                        .#{$breakpoint-name}-#{$attr}-#{$i}-hm {
+                            #{$attr}-top: $global-padding * $i;
+                            #{$attr}-right: $global-padding * $i;
+                            #{$attr}-bottom: $global-padding * $i;
+                            #{$attr}-left: $global-padding * $i;
+                        }
+                    }
+                }
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $attr in $types {
+                    @for $i from 0 through $max {
+                        @if (str-index($attr, 'vertical')) {
+                            .#{$breakpoint-name}-margin-vertical-#{$i}-hm {
+                                margin-top: $global-padding * $i;
+                                margin-bottom: $global-padding * $i;
+                            }
+                            .#{$breakpoint-name}-padding-vertical-#{$i}-hm {
+                                padding-top: $global-padding * $i;
+                                padding-bottom: $global-padding * $i;
+                            }
+                        }
+                        @else if (str-index($attr, 'horizontal')) {
+                            .#{$breakpoint-name}-margin-horizontal-#{$i}-hm {
+                                margin-left: $global-padding * $i;
+                                margin-right: $global-padding * $i;
+                            }
+                            .#{$breakpoint-name}-padding-horizontal-#{$i}-hm {
+                                padding-left: $global-padding * $i;
+                                padding-right: $global-padding * $i;
+                            }
+                        }
+                        @else if (str-index($attr, 'padding-') or str-index($attr, 'margin-')) {
+                            .#{$breakpoint-name}-#{$attr}-#{$i}-hm {
+                                #{$attr}: $global-padding * $i;
+                            }
+                        } @else {
+                            .#{$breakpoint-name}-#{$attr}-#{$i}-hm {
+                                #{$attr}-top: $global-padding * $i;
+                                #{$attr}-right: $global-padding * $i;
+                                #{$attr}-bottom: $global-padding * $i;
+                                #{$attr}-left: $global-padding * $i;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-space(12, $spacing-types, $breakpoints);

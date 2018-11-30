@@ -1,0 +1,108 @@
+// linear gradient
+@mixin gradient($start-color, $end-color, $orientation) {
+    background: $start-color;
+    @if $orientation == 'vertical' {
+        background: -webkit-linear-gradient(top, $start-color, $end-color);
+        background: linear-gradient(to bottom, $start-color, $end-color);
+    } @else if $orientation == 'horizontal' {
+        background: -webkit-linear-gradient(left, $start-color, $end-color);
+        background: linear-gradient(to right, $start-color, $end-color);
+    } @else {
+        background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+        background: radial-gradient(ellipse at center, $start-color, $end-color);
+    }
+}
+
+// box shadow
+@mixin box-shadow($offset-x, $offset-y, $blur, $spread, $color, $inset: false) {
+    $ie-color: ie-hex-str($color);
+
+  @if $inset {
+	    -webkit-box-shadow: inset $offset-x $offset-y $blur $spread $color;
+        box-shadow: inset $offset-x $offset-y $blur $spread $color;			
+	} @else {
+	    -webkit-box-shadow: $offset-x $offset-y $blur $spread $color;
+        box-shadow: $offset-x $offset-y $blur $spread $color;	
+		filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{$ie-color}');				
+	}
+}
+
+// generic transform
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+    @include transform(scale($scale));
+} 
+// translate
+@mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+//generates a thick underline using box-shadow
+@mixin underline($color) {
+    @include box-shadow(0, 6px, 0, -2px, $color);
+}
+
+//Generate Share Links
+@mixin shareLinks(
+    $size: 40px, 
+    $fill: black, 
+    $fill_hover: #ffffff,
+    $margin: 5px,
+    $background: grey,
+    $background_hover: black
+    ) {
+    padding: 0;
+    position: relative;
+    width: $size;
+    height: $size;
+    margin-right:$margin;
+    transition: background-color 0.2s ease-in;
+    background-color: $background;
+
+    &:last-child {
+        margin-left:0;
+    }
+
+    
+    &:hover, &:focus {
+        background-color: $background_hover;
+
+        svg {
+            fill: $fill_hover;
+        }
+    }
+    svg {
+        width:50%;
+        height:50%;
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform: translate3d(-50%,-50%,0);
+        fill: $fill;
+        transition: fill 0.2s ease-in;
+    }
+}

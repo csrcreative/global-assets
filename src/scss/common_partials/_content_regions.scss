@@ -1,0 +1,17 @@
+.content-region-hm:not([class*="-padding-top"]):not([class*="-padding-vertical"]) {
+    padding-top: 1rem;
+}
+
+.content-region-hm:not([class*="-padding-bottom"]):not([class*="-padding-vertical"]) {
+    padding-bottom: 1rem;
+}
+
+.floating-content-region-hm {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    img { 
+        width: 100%;
+        display: block;
+    }
+}

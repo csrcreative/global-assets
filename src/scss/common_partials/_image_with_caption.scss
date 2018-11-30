@@ -1,0 +1,12 @@
+.caption-container-hm {
+    background-color:rgba($white, 0.9);
+    position: relative;
+    padding: 1rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    @extend %box-shadow-bottom;
+}
+
+.caption-container-hm *:last-child {
+    margin-bottom: 0;
+}

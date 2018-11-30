@@ -1,0 +1,26 @@
+// This series of classes is to support percentage based block level grids for floating within WYSIWYG content regions
+
+@mixin make-block-grid($max-columns, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if $breakpoint-value == 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            @for $i from 1 through $max-columns {
+                .#{$breakpoint-name}-block-#{$i}-hm {
+                    display: block;
+                    width: calc( ( ( 100% / #{$max-columns} ) * #{$i} ) - #{$global-padding} );
+                }
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @for $i from 1 through $max-columns {
+                    .#{$breakpoint-name}-block-#{$i}-hm {
+                        display: block;
+                        width: calc( ( ( 100% / #{$max-columns} ) * #{$i} ) - #{$global-padding} );
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-block-grid($grid-column-count, $breakpoints);

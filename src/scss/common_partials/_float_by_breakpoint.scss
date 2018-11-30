@@ -1,0 +1,78 @@
+$float-direction: ('none','left','right');
+$clear-direction: ('none','left','right','both');
+$spacing-types: padding margin;
+
+@mixin make-float-styles($breakpoints, $float-direction, $clear-direction) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if $breakpoint-value == 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            @each $f-direction in $float-direction {
+                .#{$breakpoint-name}-float-#{$f-direction}-hm { 
+                    float: #{$f-direction};
+                }
+            }
+            @each $c-direction in $clear-direction {
+                .#{$breakpoint-name}-clear-#{$c-direction}-hm { 
+                    clear: #{$c-direction};
+                }
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $f-direction in $float-direction {
+                    .#{$breakpoint-name}-float-#{$f-direction}-hm { 
+                        float: #{$f-direction};
+                    }
+                }
+                @each $c-direction in $clear-direction {
+                    .#{$breakpoint-name}-clear-#{$c-direction}-hm { 
+                        clear: #{$c-direction};
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-float-spacing($max, $types, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            @each $attr in $types {
+                @for $i from 0 through $max {
+                    .#{$breakpoint-name}-#{$attr}-#{$i}-hm {
+                        &[class*="float-left-hm"] {
+                            #{$attr}-left: 0;
+                            #{$attr}-right: $global-padding * $i;
+                        }
+
+                        &[class*="float-right-hm"] {
+                            #{$attr}-left: $global-padding * $i;
+                            #{$attr}-right: 0;
+                        }
+                    }
+                }
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $attr in $types {
+                    @for $i from 0 through $max {
+                        .#{$breakpoint-name}-#{$attr}-#{$i}-hm {
+                            &[class*="float-left-hm"] {
+                                #{$attr}-left: 0;
+                                #{$attr}-right: $global-padding * $i;
+                            }
+
+                            &[class*="float-right-hm"] {
+                                #{$attr}-left: $global-padding * $i;
+                                #{$attr}-right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-float-styles($breakpoints, $float-direction, $clear-direction);
+@include make-float-spacing(12, $spacing-types, $breakpoints);

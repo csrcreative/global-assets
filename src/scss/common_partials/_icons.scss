@@ -1,0 +1,38 @@
+$playButton: "play-button-white.svg";
+$chevronRight: "chevron-white-right.svg";
+
+%vertical-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-after-absolute-hm,
+.icon-before-absolute-hm {
+    position: relative;
+
+    &:before,
+    &:after {
+        @extend %empty-psuedo-absolute;
+        @extend %vertical-center;
+    }
+}
+
+.icon-play-white-hm:after {
+    width: 20px;
+    height: 20px;
+    right: -30px;
+    background-image: url(#{$images}svg/#{$playButton});
+}
+
+.icon-chevron-white-right {
+    padding-right: 1.5rem;
+
+    &:after {
+        right: 0;
+        height: 100%;
+        width: 1rem;
+        background-image: url(#{$images}svg/#{$chevronRight});
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}

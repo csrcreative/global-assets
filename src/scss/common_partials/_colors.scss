@@ -1,0 +1,22 @@
+// This partial requires $foundation-palette to be set from a _foundation_settings partial in each project folder
+
+@each $name, $color in $foundation-palette {
+    .background-color-#{$name}-hm { background-color:$color !important; }
+    .color-#{$name}-hm { color:$color !important; }
+    .border-color-#{$name}-hm { border-color:$color !important; }
+    .underline-color-#{$name}-hm { text-decoration-color:$color !important; }
+}
+
+@each $name, $color in $foundation-palette {
+    .hover-background-color-#{$name}-hm:hover, .hover-background-color-#{$name}-hm:active { background-color:$color !important; }
+    .hover-color-#{$name}-hm:hover, .hover-color-#{$name}-hm:active { color:$color !important; }
+    .hover-border-color-#{$name}-hm:hover, .hover-border-color-#{$name}-hm:active { border-color:$color !important; }
+    .hover-underline-color-#{$name}-hm:hover, .hover-underline-color-#{$name}-hm:active { text-decoration-color:$color !important; }
+}
+
+@each $name, $color in $foundation-palette {
+    .focus-background-color-#{$name}-hm:focus { background-color:$color !important; }
+    .focus-color-#{$name}-hm:focus { color:$color !important; }
+    .focus-border-color-#{$name}-hm:focus { border-color:$color !important; }
+    .focus-underline-color-#{$name}-hm:focus { text-decoration-color:$color !important; }
+}

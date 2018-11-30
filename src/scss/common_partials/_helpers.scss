@@ -1,0 +1,246 @@
+/* Placeholder classes */
+%empty-psuedo-absolute {
+    content: "";
+    position: absolute;
+    display: block;
+}
+
+%box-shadow-bottom {
+    box-shadow: 0 4px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.box-shadow-bottom {
+    @extend %box-shadow-bottom;
+}
+
+.hidden-content-hm {
+    position: absolute !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+}
+
+.overflow-hidden-hm {
+    overflow: hidden;
+}
+
+/* TYPE */
+.capitalize-hm {
+    text-transform: capitalize;
+}
+.uppercase-hm {
+    text-transform: uppercase;
+}
+.lowercase-hm {
+    text-transform: lowercase;
+}
+.center-hm {
+    text-align: center;
+}
+
+.domaine-hm {
+    font-family: "Domaine Display Narrow", "Times New Roman", Times, serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.domaine-italic-hm {
+    font-family: "Domaine Display Narrow Italic", "Times New Roman", Times,
+        serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.gotham-hm {
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+        sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.gotham-italic-hm {
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+        sans-serif;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.gotham-book-hm {
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+        sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.gotham-book-italic-hm {
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+        sans-serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.gotham-bold-hm {
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+        sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.gotham-bold-italic-hm {
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+        sans-serif;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.subhead-hm {
+    @extend .h5;
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+        sans-serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+}
+
+.subhead-wrapper-hm {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @extend .h5;
+        font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma,
+            sans-serif !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+    }
+}
+
+@for $i from 1 through 6 {
+    .font-size-#{$i}-hm {
+        font-size: #{typeScale($i)}rem;
+    }
+}
+
+@for $i from -1 through -3 {
+    .font-size-n#{-$i}-hm {
+        font-size: #{typeScale($i)}rem;
+    }
+}
+
+@for $i from 1 through 9 {
+    .letter-spacing-#{$i}-hm {
+        letter-spacing: #{$i/10}rem;
+    }
+}
+
+@for $i from 1 through 3 {
+    @for $j from 0 through 9 {
+        .line-height-#{$i}_#{$j}-hm {
+            line-height: #{$i + $j/10}rem;
+        }
+    }
+}
+
+//* BORDERS */
+$sides: left right top bottom all;
+
+@each $side in $sides {
+    @if ($side == all) {
+        .border-all-hm {
+            border-width: 1px;
+            border-style: solid;
+        }
+    } @else {
+        .border-#{$side}-hm {
+            border-#{$side}-width: 1px !important;
+            border-#{$side}-style: solid !important;
+        }
+    }
+}
+
+/* BORDER RADIUS */
+.border-radius-circle-hm {
+    border-radius: 1000px;
+    overflow: hidden;
+}
+
+//* VIDEO */
+.video-hm {
+    position: relative;
+    max-width: 100%;
+    padding-bottom: 56.25%;
+
+    iframe {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Links */
+.link-teal-hm {
+    font-weight: bold;
+    @include underline($brand-teal);
+    color: $brand-black;
+    transition: all 0.2s ease;
+
+    &:visited {
+        color: $brand-blue;
+        @include underline($brand-teal);
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: $brand-teal-dk;
+        @include underline($brand-teal-dk);
+    }
+}
+
+/* Position */
+.static-hm {
+    position: static;
+}
+.relative-hm {
+    position: relative;
+}
+.absolute-hm {
+    position: absolute;
+}
+.fixed-hm {
+    position: fixed;
+}
+
+@for $i from 1 through 3 {
+    .top-#{$i}-hm {
+        top: #{$i}rem;
+    }
+    .right-#{$i}-hm {
+        right: #{$i}rem;
+    }
+    .bottom-#{$i}-hm {
+        bottom: #{$i}rem;
+    }
+    .left-#{$i}-hm {
+        left: #{$i}rem;
+    }
+}
+
+/* Lazy Loading Assets */
+.lazy-hm,
+.lazy-picture-hm {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.lazy-loaded-hm {
+    opacity:1;
+}

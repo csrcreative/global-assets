@@ -1,0 +1,12 @@
+.row-hm {
+    background-color: $brand-gray-lt;
+}
+
+main .row-hm:first-of-type,
+#hero + .row-hm {
+    padding-top: 3rem;
+}
+
+main .row-hm:last-child {
+    padding-bottom: 3rem;
+}

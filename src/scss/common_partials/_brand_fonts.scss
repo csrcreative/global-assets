@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'Domaine Display Narrow';
+	src: url('#{$fonts}DomaineDisplayNarrowWeb-Bold.eot') format('eot'),
+		 url('#{$fonts}DomaineDisplayNarrowWeb-Bold.woff2') format('woff2'),
+		 url('#{$fonts}DomaineDisplayNarrowWeb-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Domaine Display Narrow Italic';
+	src: url('#{$fonts}DomaineDisplayNarrowWeb-BoldItalic.eot') format('eot'),
+		 url('#{$fonts}DomaineDisplayNarrowWeb-BoldItalic.woff2') format('woff2'),
+		 url('#{$fonts}DomaineDisplayNarrowWeb-BoldItalic.woff') format('woff');
+}

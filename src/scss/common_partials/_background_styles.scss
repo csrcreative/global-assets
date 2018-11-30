@@ -1,0 +1,69 @@
+$background-position: (
+    ('lt','left top'),
+    ('lc','left center'),
+    ('lb','left bottom'),
+    ('ct','center top'),
+    ('cc','center center'),
+    ('cb','center bottom'),
+    ('rt','right top'),
+    ('rc','right center'),
+    ('rb','right bottom'),
+    ('initial','initial'),
+    ('inherit','inherit')
+);
+$background-repeat: 'repeat','repeat-x','repeat-y','no-repeat','space','round','initial','inherit';
+$background-size: 'auto','cover','contain','initial','inherit';
+$background-attachment: 'scroll','fixed','local','initial','inherit';
+
+@mixin make-background-styles($breakpoints, $background-position, $background-repeat, $background-size, $background-attachment) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if $breakpoint-value == 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            @each $position in $background-position {
+                .#{$breakpoint-name}-bgposition-#{nth($position, 1)}-hm { 
+                    background-position: #{nth($position, 2)};
+                }
+            }
+            @each $repeat in $background-repeat {
+                .#{$breakpoint-name}-bgrepeat-#{$repeat}-hm {
+                    background-repeat: #{$repeat};
+                } 
+            }
+            @each $size in $background-size {
+                .#{$breakpoint-name}-bgsize-#{$size}-hm {
+                    background-size: #{$size};
+                } 
+            }
+            @each $attachment in $background-attachment {
+                .#{$breakpoint-name}-bgattachment-#{$attachment}-hm {
+                    background-attachment: #{$attachment};
+                } 
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $position in $background-position {
+                    .#{$breakpoint-name}-bgposition-#{nth($position, 1)}-hm { 
+                        background-position: #{nth($position, 2)};
+                    }
+                }
+                @each $repeat in $background-repeat {
+                    .#{$breakpoint-name}-bgrepeat-#{$repeat}-hm {
+                        background-repeat: #{$repeat};
+                    } 
+                }
+                @each $size in $background-size {
+                    .#{$breakpoint-name}-bgsize-#{$size}-hm {
+                        background-size: #{$size};
+                    } 
+                }
+                @each $attachment in $background-attachment {
+                    .#{$breakpoint-name}-bgattachment-#{$attachment}-hm {
+                        background-attachment: #{$attachment};
+                    } 
+                }
+            }
+        }
+    }
+}
+
+@include make-background-styles($breakpoints, $background-position, $background-repeat, $background-size, $background-attachment);

@@ -1,0 +1,71 @@
+.brand-button-hollow-hm,
+.brand-button-hm {
+    @extend .button;
+    display: inline-block;
+    padding: .75rem 1.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.3rem;
+    text-transform: uppercase;
+    width: 100%;
+    max-width: 100%;
+    transition: 0.2s all ease;
+
+    @include breakpoint(medium) {
+        width: auto;
+        min-width: 60%;
+    }
+}
+
+.brand-button-hollow-hm {
+    border: 2px solid $brand-white;
+    color: $brand-white;
+}
+.brand-button-hollow-hm:hover,
+.brand-button-hollow-hm:focus {
+    background: $brand-white;
+    color: $brand-text-gray;
+    text-decoration: none;
+    border-bottom: 2px solid $brand-white !important;
+}
+
+.brand-button-hm {
+    color: $brand-white;
+    background: $brand-red;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0 !important;
+    border-left: 0;
+}
+.brand-button-hm:hover,
+.brand-button-hm:focus {
+    background: $hover-state-red;
+    text-decoration: none;
+}
+
+@mixin make-buttons($foundation-palette) {
+    @each $color-name, $color-value in $foundation-palette {
+        .brand-button-hollow-hm.#{$color-name}-hm {
+            background: #{$color-value};
+        }
+        .brand-button-hollow-hm.#{$color-name}-hm:hover,
+        .brand-button-hollow-hm.#{$color-name}-hm:focus {
+            background: $brand-white;
+            color: #{$color-value};
+        }
+
+        .brand-button-hm.#{$color-name}-hm {
+            background: #{$color-value};
+        }
+
+        .brand-button-hm.#{$color-name}-hm:hover,
+        .brand-button-hm.#{$color-name}-hm:focus {
+            background: lighten($color-value, 12%);
+        }
+    }
+}
+
+@include make-buttons($foundation-palette);

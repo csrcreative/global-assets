@@ -1,0 +1,77 @@
+$align-horizontal: (
+    ('left','flex-start'),
+    ('center','center'),
+    ('right','flex-end'),
+    ('justify','space-between'),
+    ('spaced','space-around')
+);
+$align-vertical: (
+    ('top','flex-start'),
+    ('middle','center'),
+    ('bottom','flex-end')
+);
+
+@mixin make-alignment-styles($breakpoints, $align-horizontal, $align-vertical) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if $breakpoint-value == 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            @each $h-alignment-name, $h-alignment-value in $align-horizontal {
+                .#{$breakpoint-name}-align-#{$h-alignment-name}-hm { 
+                    justify-content: #{$h-alignment-value};
+                    @if ($h-alignment-name == "justify") {
+                        -webkit-box-pack: justify;
+                        -ms-flex-pack: justify;
+                    }
+                }
+            }
+            @each $v-alignment-name, $v-alignment-value in $align-vertical {
+                .#{$breakpoint-name}-align-#{$v-alignment-name}-hm { 
+                    align-items: #{$v-alignment-value};
+                }
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $h-alignment-name, $h-alignment-value in $align-horizontal {
+                    .#{$breakpoint-name}-align-#{$h-alignment-name}-hm { 
+                        justify-content: #{$h-alignment-value};
+                        @if ($h-alignment-name == "justify") {
+                            -webkit-box-pack: justify;
+                            -ms-flex-pack: justify;
+                        }
+                    }
+                }
+                @each $v-alignment-name, $v-alignment-value in $align-vertical {
+                    .#{$breakpoint-name}-align-#{$v-alignment-name}-hm { 
+                        align-items: #{$v-alignment-value};
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin make-self-horizontal-alignment-styles($breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if $breakpoint-value == 0, set it global without media queries
+        @if ($breakpoint-value == 0) {
+            .#{$breakpoint-name}-align-self-left-hm { 
+                margin-right: auto !important;
+            }
+            .#{$breakpoint-name}-align-self-right-hm { 
+                margin-left: auto !important;
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                .#{$breakpoint-name}-align-self-left-hm { 
+                    margin-right: auto !important;
+                }
+                .#{$breakpoint-name}-align-self-right-hm { 
+                    margin-left: auto !important;
+                }
+            }
+        }
+    }
+}
+
+@include make-alignment-styles($breakpoints, $align-horizontal, $align-vertical);
+@include make-self-horizontal-alignment-styles($breakpoints);

@@ -1,0 +1,33 @@
+//PRIMARY
+$brand-blue: #000066;
+$brand-red: #990000;
+
+//SECONDARY
+$brand-blue-lt: #123c63;
+$brand-red-dk: #7b0808;
+$brand-teal: #50c2bb;
+$brand-teal-dk: #00938A;
+$brand-yellow: #f1C829;
+$brand-yellow-dk: #E6B122;
+$brand-orange: #eb9123;
+$brand-orange-dk: #df6e31;
+$brand-green: #bec531;
+$brand-green-dk:#71923c;
+
+
+//NEUTRALS
+$brand-white: #fff;
+$brand-off-white: #EFE0D9;
+$brand-cool-gray: #BAB6B5;
+$brand-cool-gray-dk: #90889E;
+$brand-gray-lt: #f4f3f3;
+$brand-gray-lt2: #adadad;
+$brand-text-gray: #292929;
+$brand-text-gray-lt: $brand-gray-lt2;
+$brand-gray-md: #646464;
+$brand-gray-dk: #262525;
+$brand-black: #404040;
+
+//Additions 
+$hover-state-red: lighten($brand-red, 12%);
+$hover-state-gray: lighten($brand-cool-gray, 15%);
