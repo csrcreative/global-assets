@@ -1,12 +1,12 @@
 {
   "name": "@romerocs/global-assets",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Testing npm private packages",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
+  "dependencies": {
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "es6-promise": "^4.2.4",
     "foundation-sites": "~6.5.0",
