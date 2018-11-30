@@ -1,6 +1,6 @@
 {
   "name": "@romerocs/global-assets",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Testing npm private packages",
   "main": "index.js",
   "scripts": {
