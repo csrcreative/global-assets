@@ -18,7 +18,7 @@ const default_params = {
                 test: /\.js$/,
                 use: {
                     loader: "babel-loader",
-                    options: requires.babelOptions
+                    options: babelOptions
                 }
             },
             {
@@ -26,7 +26,7 @@ const default_params = {
                 use: [
                     {
                         loader: "babel-loader",
-                        options: requires.babelOptions
+                        options: babelOptions
                     },
                     {
                         loader: "ts-loader"
@@ -36,7 +36,7 @@ const default_params = {
         ]
     },
     plugins: [
-        new requires.webpack.ProvidePlugin({
+        new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
         })
@@ -52,7 +52,7 @@ const default_params = {
 
 function _resolveBuildTarget(defaultTarget) {
     // target is an argument passed into the node command from the package.json file
-    var target = requires.minimist(process.argv.slice(2)).TARGET;
+    var target = minimist(process.argv.slice(2)).TARGET;
     if (!target) {
         console.log('No build target provided, using default target instead. \n\n');
         target = defaultTarget;
@@ -62,7 +62,7 @@ function _resolveBuildTarget(defaultTarget) {
 
 function _resolveBuildProject(defaultProject) {
     // project is an argument passed into the node command from the package.json file
-    var project = requires.minimist(process.argv.slice(3)).PROJECT;
+    var project = minimist(process.argv.slice(3)).PROJECT;
     if (!project) {
         console.log('No build project provided, using default project instead. \n\n');
         project = defaultProject;
@@ -71,26 +71,20 @@ function _resolveBuildProject(defaultProject) {
 }
 
 function _printBuildInfo(target, project, params) {
-    console.log('\n\n Starting ' + requires.chalk.bold.green('"' + project + ' - ' + target + '"') + '. \n\n');
+    console.log('\n\n Starting ' + chalk.bold.green('"' + project + ' - ' + target + '"') + '. \n\n');
 }
 
 function _mergeArraysCustomizer(a, b, c) {
-    if (requires._.isArray(a)) {
+    if (_.isArray(a)) {
         return a.concat(b, c);
     }
 }
-
-_printBuildInfo(target, project, params);
 
 module.exports = {
     _,
     path,
     webpack,
     default_params,
-    minimist,
-    chalk,
-    UglifyJSPlugin,
-    babelOptions,
     _resolveBuildTarget,
     _resolveBuildProject,
     _printBuildInfo,
