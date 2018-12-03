@@ -1,5 +1,6 @@
 const ncp = require("ncp");
 const chalk = require("chalk");
+
 const destinations = {
     dev: "dev/fonts",
     dist: "dist/fonts"
@@ -15,8 +16,12 @@ function copyFonts(destination) {
     });
 }
 
-if (!process.argv[2]) {
-    console.log(chalk.bold.yellowBright("Please provide a desitination for font copying."));
-} else {
-    copyFonts(process.argv[2]);
+function fonts(destination) {
+    if (!process.argv[2]) {
+        console.log(chalk.bold.yellowBright("Please provide a destination for font copying."));
+    } else {
+        copyFonts(process.argv[2]);
+    }
 }
+
+module.exports = fonts;
