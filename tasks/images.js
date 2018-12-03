@@ -56,12 +56,16 @@ function minify(type) {
   }
 }
 
-if (!process.argv[2] || (process.argv[2] != "jpg" && process.argv[2] != "png" && process.argv[2] != "svg")) {
-  console.log(
-    chalk.bold.yellowBright(
-      "Please provide an image type to minify.\nImage types are:\njpg - png - svg"
-    )
-  );
-} else {
-  minify(process.argv[2]);
+function images() {
+  if (!process.argv[2] || (process.argv[2] != "jpg" && process.argv[2] != "png" && process.argv[2] != "svg")) {
+    console.log(
+      chalk.bold.yellowBright(
+        "Please provide an image type to minify.\nImage types are:\njpg - png - svg"
+      )
+    );
+  } else {
+    minify(process.argv[2]);
+  } 
 }
+
+module.exports = images;
