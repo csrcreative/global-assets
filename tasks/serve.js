@@ -4,7 +4,7 @@ const bsAssets = bs.create("Assets");
 const bsDemos = bs.create("Demos");
 
 
-function serve() {
+function serve(filesArray) {
   if (bsAssets.active) {
     // kill active assets browsersync processes
     bsAssets.exit();
@@ -34,7 +34,7 @@ function serve() {
       bsDemos.init(
         {
           proxy: "demos:8080/hermes/",
-          files: ["./dev/css/**/*.css", "./dev/js/**/*.js", "./dist/img/**/*.*", "./html/**/*.*", "../../../includes/**/*.phtml"]
+          files: filesArray
         }, function() {
           console.log(
             chalk.bold.yellowBright(
@@ -48,4 +48,4 @@ function serve() {
   // bsDemos.reload(["./dist/css/*.css", "./dist/js/*.js", "./dist/img/*.*"]);
 }
 
-serve();
+module.exports = serve;
