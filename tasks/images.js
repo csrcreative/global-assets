@@ -4,15 +4,15 @@ const imageminJpegtran = require("imagemin-jpegtran");
 const imageminPngquant = require("imagemin-pngquant");
 const imageminSvgo = require("imagemin-svgo");
 
-function minify(type) {
+function minify(type, paths) {
   if (type == "jpg") {
-    imagemin(["src/img/jpg/*.jpg"], "dist/img/jpg", {
+    imagemin([`${paths.input}/jpg/*.jpg`], `${paths.output}/jpg`, {
       plugins: [imageminJpegtran()]
     }).then(files => {
       console.log(chalk.bold.yellowBright("JPG Dist images minified."));
     });
     
-    imagemin(["src/img/jpg/*.jpg"], "dev/img/jpg", {
+    imagemin([`${paths.input}/jpg/*.jpg`], `${paths.output}/jpg`, {
       plugins: [imageminJpegtran()]
     }).then(files => {
       console.log(chalk.bold.yellowBright("JPG Dev images minified."));
@@ -20,13 +20,13 @@ function minify(type) {
   }
 
   if (type == "png") {
-    imagemin(["src/img/png/*.png"], "dist/img/png", {
+    imagemin([`${paths.input}/png/*.png`], `${paths.output}/png`, {
       plugins: [imageminPngquant({ quality: "65-80" })]
     }).then(files => {
       console.log(chalk.bold.yellowBright("PNG Dist images minified."));
     });
     
-    imagemin(["src/img/png/*.png"], "dev/img/png", {
+    imagemin([`${paths.input}/png/*.png`], `${paths.output}/png`, {
       plugins: [imageminPngquant({ quality: "65-80" })]
     }).then(files => {
       console.log(chalk.bold.yellowBright("PNG Dev images minified."));
@@ -34,7 +34,7 @@ function minify(type) {
   }
 
   if (type == "svg") {
-    imagemin(["src/img/svg/*.svg"], "dist/img/svg", {
+    imagemin([`${paths.input}/svg/*.svg`], `${paths.output}/svg`, {
       use: [
         imageminSvgo({
           plugins: [{ removeViewBox: false }]
@@ -44,7 +44,7 @@ function minify(type) {
       console.log(chalk.bold.yellowBright("SVG Dist images minified."));
     });
     
-    imagemin(["src/img/svg/*.svg"], "dev/img/svg", {
+    imagemin([`${paths.input}/svg/*.svg`], `${paths.output}/svg`, {
       use: [
         imageminSvgo({
           plugins: [{ removeViewBox: false }]
@@ -56,7 +56,7 @@ function minify(type) {
   }
 }
 
-function images() {
+function images(paths) {
   if (!process.argv[2] || (process.argv[2] != "jpg" && process.argv[2] != "png" && process.argv[2] != "svg")) {
     console.log(
       chalk.bold.yellowBright(
@@ -64,7 +64,7 @@ function images() {
       )
     );
   } else {
-    minify(process.argv[2]);
+    minify(process.argv[2], paths);
   } 
 }
 
